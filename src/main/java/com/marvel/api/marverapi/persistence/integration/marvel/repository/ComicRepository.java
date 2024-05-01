@@ -1,5 +1,4 @@
 package com.marvel.api.marverapi.persistence.integration.marvel.repository;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.marvel.api.marverapi.dto.Pageable;
 import com.marvel.api.marverapi.persistence.integration.marvel.MarvelAPIConfig;
@@ -9,8 +8,6 @@ import com.marvel.api.marverapi.service.HttpClientService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

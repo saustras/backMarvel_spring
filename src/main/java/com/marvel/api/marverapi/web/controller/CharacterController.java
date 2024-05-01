@@ -1,12 +1,9 @@
 package com.marvel.api.marverapi.web.controller;
-
-
 import com.marvel.api.marverapi.dto.Pageable;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.CharacterDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.CharacterInfoDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.GetCharactersDto;
 import com.marvel.api.marverapi.service.CharacterService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

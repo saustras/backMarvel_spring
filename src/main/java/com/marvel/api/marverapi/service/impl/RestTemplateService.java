@@ -1,12 +1,10 @@
 package com.marvel.api.marverapi.service.impl;
-
 import com.marvel.api.marverapi.exception.ApiErrorException;
 import com.marvel.api.marverapi.service.HttpClientService;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import java.util.Collections;
 import java.util.Map;
 

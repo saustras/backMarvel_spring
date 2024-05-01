@@ -1,11 +1,9 @@
 package com.marvel.api.marverapi.persistence.integration.marvel.mapper;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.ComicDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.interfaces.NodeToDtoMapper;
 import com.marvel.api.marverapi.persistence.integration.marvel.repository.ThumbnailMapper;
-
 import java.util.ArrayList;
 import java.util.List;
 
