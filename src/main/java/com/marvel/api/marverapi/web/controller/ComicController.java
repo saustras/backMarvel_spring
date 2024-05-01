@@ -24,7 +24,7 @@ public class ComicController {
 
     @GetMapping
     public ResponseEntity<List<ComicDto>> findAll(@Valid GetComicsDto getComicsDto) {
-        return ResponseEntity.ok(comicService.findAll(getComicsDto));♠
+        return ResponseEntity.ok(comicService.findAll(getComicsDto));
     }
 
     @GetMapping("/{comicId}")

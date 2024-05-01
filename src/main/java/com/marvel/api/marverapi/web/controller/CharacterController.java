@@ -26,7 +26,7 @@ public class CharacterController {
 
     @GetMapping
     public ResponseEntity<List<CharacterDto>> getCharacters(Pageable pageable,  GetCharactersDto getCharactersDto) {
-        return ResponseEntity.ok(characterService.findAll(pageable, getCharactersDto));♠
+        return ResponseEntity.ok(characterService.findAll(pageable, getCharactersDto));
     }
 
     @GetMapping("/{characterId}")
