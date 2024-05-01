@@ -1,6 +1,7 @@
 package com.marvel.api.marverapi.service.impl;
 import com.marvel.api.marverapi.exception.ApiErrorException;
 import com.marvel.api.marverapi.service.HttpClientService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -59,7 +60,7 @@ public class RestTemplateService implements HttpClientService {
         return response.getBody();
     }
 
-    private static <T> void ExceptionErrorStatuscode(String endpoint, ResponseEntity<T> response, HttpMethod method) {
+    private static <T> void ExceptionErrorStatuscode(String endpoint, @NotNull ResponseEntity<T> response, HttpMethod method) {
         if (!response.getStatusCode().is2xxSuccessful()) {
             String message = format("Error consumiendo endpoint [ {} - {} ], StatusCode: {} ",
                     method, endpoint, response.getStatusCode());
@@ -67,6 +68,7 @@ public class RestTemplateService implements HttpClientService {
         }
     }
 
+    @NotNull
     private static String buildFinalUrl(String endpoint, Map<String, String> queryParams) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(endpoint);
 
@@ -79,6 +81,7 @@ public class RestTemplateService implements HttpClientService {
         return finalUrl;
     }
 
+    @NotNull
     private HttpHeaders getHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

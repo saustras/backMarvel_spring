@@ -1,5 +1,6 @@
 package com.marvel.api.marverapi.util;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ public class MD5Encoder implements PasswordEncoder {
     }
 
     @Override
-    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+    public boolean matches(CharSequence rawPassword, @NotNull String encodedPassword) {
         return encodedPassword.equals(this.encode(rawPassword));
     }
 }

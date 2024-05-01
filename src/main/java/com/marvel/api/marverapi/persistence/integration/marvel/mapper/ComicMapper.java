@@ -4,11 +4,14 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.ComicDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.interfaces.NodeToDtoMapper;
 import com.marvel.api.marverapi.persistence.integration.marvel.repository.ThumbnailMapper;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComicMapper {
 
+    @NotNull
     public static <T> List<T> toDtoList(JsonNode rootNode, NodeToDtoMapper<T> mapper) {
         ArrayNode node = getResultNode(rootNode);
         List<T> dtoList  = new ArrayList<>();
@@ -16,6 +19,7 @@ public class ComicMapper {
         return dtoList;
     }
 
+    @NotNull
     public static List<ComicDto> ComicDtoList(JsonNode comic) {
         return toDtoList(comic, comicNode -> new ComicDto(
                 Long.parseLong(comicNode.get("id").asText()),
@@ -27,7 +31,7 @@ public class ComicMapper {
         ));
     }
 
-    private static ArrayNode getResultNode(JsonNode rootNode) {
+    private static ArrayNode getResultNode(@NotNull JsonNode rootNode) {
         if(rootNode.isNull()) {
             throw new IllegalArgumentException("Root node is null");
         }

@@ -9,6 +9,7 @@ import com.marvel.api.marverapi.persistence.integration.marvel.dto.CharacterInfo
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.GetCharactersDto;
 import com.marvel.api.marverapi.service.HttpClientService;
 import jakarta.annotation.PostConstruct;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -37,7 +38,7 @@ public class CharacterRepository {
     }
 
 
-    public List<CharacterDto> findAll(Pageable pageable, GetCharactersDto CharactersDto) {
+    public List<CharacterDto> findAll(Pageable pageable, @NotNull GetCharactersDto CharactersDto) {
 
         Map<String, String > marvelQueryParams= getQueryParamsForFindAll(pageable,
             CharactersDto.name(), CharactersDto.comics(), CharactersDto.series());
@@ -65,6 +66,7 @@ public class CharacterRepository {
         return queryParams;
     }
 
+    @NotNull
     private String joinIntArray(int[] comics) {
         List<String> stringArray = IntStream.of(comics).boxed().map(Object::toString).toList();
         return  String.join(",",stringArray);

@@ -6,6 +6,7 @@ import com.marvel.api.marverapi.persistence.integration.marvel.dto.ComicDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.mapper.ComicMapper;
 import com.marvel.api.marverapi.service.HttpClientService;
 import jakarta.annotation.PostConstruct;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -40,7 +41,7 @@ public class ComicRepository  {
 
         return queryParams;
     }
-    private void  putPageableQueryParams(Pageable pageable){
+    private void  putPageableQueryParams(@NotNull Pageable pageable){
         queryParams.put("offset", Long.toString(pageable.offset()));
         queryParams.put("limit", Long.toString(pageable.limit()));
     }

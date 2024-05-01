@@ -7,12 +7,14 @@ import com.marvel.api.marverapi.persistence.integration.marvel.dto.CharacterInfo
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.ThunbnailDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.interfaces.NodeToDtoMapper;
 import com.marvel.api.marverapi.persistence.integration.marvel.repository.ThumbnailMapper;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterMapper {
 
+    @NotNull
     public static <T> List<T> toDtoList(JsonNode rootNode, NodeToDtoMapper<T> mapper) {
         ArrayNode node = getResultNode(rootNode);
         List<T> dtoList  = new ArrayList<>();
@@ -20,7 +22,8 @@ public class CharacterMapper {
         return dtoList;
     }
 
-    public static List<CharacterDto> characterDtoList( JsonNode character) {
+    @NotNull
+    public static List<CharacterDto> characterDtoList(JsonNode character) {
         return toDtoList(character, characterNode -> new CharacterDto(
                 Long.parseLong(characterNode.get("id").asText()),
                 characterNode.get("name").asText(),
@@ -30,6 +33,7 @@ public class CharacterMapper {
         ));
     }
 
+    @NotNull
     public static List<CharacterInfoDto> characterInfoDtoList(JsonNode characterInfo) {
         return toDtoList(characterInfo, characterInfoNode -> new CharacterInfoDto(
                 getThumbnailString(characterInfo),
@@ -37,13 +41,14 @@ public class CharacterMapper {
         ));
     }
 
-    private static String getThumbnailString(JsonNode characterInfo) {
+    @NotNull
+    private static String getThumbnailString(@NotNull JsonNode characterInfo) {
         JsonNode thumbnailNode = characterInfo.get("thumbnail");
         ThunbnailDto thunbnailDto = ThumbnailMapper.toDto(thumbnailNode);
         return thunbnailDto.path().concat(".").concat(thunbnailDto.extension());
     }
 
-    private static ArrayNode getResultNode(JsonNode rootNode) {
+    private static ArrayNode getResultNode(@NotNull JsonNode rootNode) {
         if(rootNode.isNull()) {
             throw new IllegalArgumentException("Root node is null");
         }

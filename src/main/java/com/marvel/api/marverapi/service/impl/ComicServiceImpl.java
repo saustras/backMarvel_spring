@@ -5,7 +5,7 @@ import com.marvel.api.marverapi.persistence.integration.marvel.dto.ComicDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.GetComicsDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.repository.ComicRepository;
 import com.marvel.api.marverapi.service.ComicService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +21,7 @@ public class ComicServiceImpl implements ComicService {
     }
 
     @Override
-    public List<ComicDto> findAll(GetComicsDto dto) {
-        Pageable pageable = new Pageable(dto.offset(), dto.limit());
+    public List<ComicDto> findAll(Pageable pageable, @NotNull GetComicsDto dto) {
         return comicRepository.findAll(pageable, dto.characterId());
     }
 

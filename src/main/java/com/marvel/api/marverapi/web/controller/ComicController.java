@@ -1,4 +1,5 @@
 package com.marvel.api.marverapi.web.controller;
+import com.marvel.api.marverapi.dto.Pageable;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.ComicDto;
 import com.marvel.api.marverapi.persistence.integration.marvel.dto.GetComicsDto;
 import com.marvel.api.marverapi.service.ComicService;
@@ -21,8 +22,8 @@ public class ComicController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ComicDto>> findAll(@Valid GetComicsDto getComicsDto) {
-        return ResponseEntity.ok(comicService.findAll(getComicsDto));
+    public ResponseEntity<List<ComicDto>> findAll(Pageable pageable, @Valid GetComicsDto getComicsDto) {
+        return ResponseEntity.ok(comicService.findAll(pageable, getComicsDto));
     }
 
     @GetMapping("/{comicId}")
